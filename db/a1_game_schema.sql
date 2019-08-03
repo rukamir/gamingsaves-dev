@@ -1,5 +1,5 @@
-create database test;
-use test;
+create database game;
+use game;
 
 CREATE TABLE testtab
 (
@@ -8,7 +8,7 @@ name TEXT,
 PRIMARY KEY (id)
 ) COMMENT='this is my test table';
 
-CREATE TABLE `test`.`game` (
+CREATE TABLE `game`.`deals` (
   `title` VARCHAR(45) NOT NULL,
   `platform` VARCHAR(45) NOT NULL,
   `list_price` DECIMAL(6,2) NOT NULL,
