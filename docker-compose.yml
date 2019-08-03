@@ -9,3 +9,13 @@ services:
       - ./db:/docker-entrypoint-initdb.d/
     ports:
       - "3306:3306"
+  minio:
+    image: minio/minio:latest
+    volumes:
+      - ./s3:/data
+    ports:
+      - 9000:9000
+    environment:
+      MINIO_ACCESS_KEY: minio
+      MINIO_SECRET_KEY: minio123
+    command: server /data
