@@ -1,0 +1,3 @@
+[submodule "bg-processes"]
+	path = bg-processes
+	url = https://github.com/rukamir/gamedeals-processes.git
