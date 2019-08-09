@@ -3,21 +3,38 @@ use game;
 
 CREATE TABLE testtab
 (
-id INTEGER AUTO_INCREMENT,
+  id INTEGER
+  AUTO_INCREMENT,
 name TEXT,
-PRIMARY KEY (id)
+PRIMARY KEY
+  (id)
 ) COMMENT='this is my test table';
 
-CREATE TABLE `game`.`deals` (
-  `title` VARCHAR(45) NOT NULL,
-  `platform` VARCHAR(45) NOT NULL,
-  `list_price` DECIMAL(6,2) NOT NULL,
-  `msrp_price` DECIMAL(6,2) NOT NULL,
-  `mem_price` DECIMAL(6,2) NULL DEFAULT NULL,
-  `discount` TINYINT(2) NOT NULL,
-  `url` VARCHAR(45) NOT NULL,
-  `thumbnail` VARCHAR(45) NOT NULL,
-  `thumbnail_key` VARCHAR(45) NOT NULL,
-  `source` VARCHAR(45) NOT NULL,
-  `updated` VARCHAR(45) NOT NULL,
-  `created` VARCHAR(45) NOT NULL);
+  CREATE TABLE `deals`
+  (
+  `id` varchar
+  (45) NOT NULL,
+  `title` varchar
+  (400) NOT NULL,
+  `platform` varchar
+  (45) NOT NULL,
+  `list_price` decimal
+  (6,2) NOT NULL,
+  `msrp_price` decimal
+  (6,2) NOT NULL,
+  `discount` tinyint
+  (2) NOT NULL,
+  `url` varchar
+  (200) NOT NULL COMMENT '\n',
+  `thumbnail_url` varchar
+  (200) NOT NULL,
+  `thumbnail_key` varchar
+  (36) NOT NULL,
+  `source` varchar
+  (45) NOT NULL,
+  `updated` datetime NOT NULL,
+  `created` datetime NOT NULL,
+  UNIQUE KEY `id_UNIQUE`
+  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
