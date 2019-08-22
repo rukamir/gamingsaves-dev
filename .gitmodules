@@ -1,3 +1,9 @@
 [submodule "bg-processes"]
 	path = bg-processes
 	url = https://github.com/rukamir/gamedeals-processes.git
+[submodule "deals-client"]
+	path = deals-client
+	url = https://github.com/rukamir/gamedeals-deals-client.git
+[submodule "ws"]
+	path = ws
+	url = https://github.com/rukamir/gamedeals-webservice.git

@@ -5,10 +5,39 @@ services:
     volumes:
       - ./proxy/nginx.conf:/etc/nginx/nginx.conf
       - ./s3:/var/www/images
+      - ./deals-client/dist:/var/www/client
     ports:
       - 80:80
-  bg-tasks:
-    build: ./bg-processes
+
+  # ws:
+  #   image: golang:1.12.9-alpine3.10
+  #   volumes:
+  #     - ./ws:/go/src/app
+  #   working_dir: /go/src/app
+  #   ports:
+  #     - 3000:3000
+  #   command: ./app
+
+  # bg-tasks:
+  #   image: node:10.16-alpine
+  #   working_dir: /home/node/app
+  #   volumes:
+  #     - ./bg-processes:/home/node/app
+  #   environment:
+  #     NODE_ENV: development
+  #   command: npm run start-nc
+
+  deals-client:
+    image: node:10.16-alpine
+    working_dir: /home/node/app
+    volumes:
+      - ./deals-client:/home/node/app
+    environment:
+      NODE_ENV: development
+    command: npm run serve
+    ports:
+      - 8080:8080
+
   db:
     image: mariadb:latest
     restart: always
@@ -17,7 +46,8 @@ services:
     volumes:
       - ./db:/docker-entrypoint-initdb.d/
     ports:
-      - "3306:3306"
+      - 3306:3306
+
   minio:
     image: minio/minio:latest
     volumes:
