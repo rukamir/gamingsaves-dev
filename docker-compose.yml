@@ -10,13 +10,10 @@ services:
       - 80:80
 
   # ws:
-  #   image: golang:1.12.9-alpine3.10
-  #   volumes:
-  #     - ./ws:/go/src/app
-  #   working_dir: /go/src/app
+  #   restart: always
+  #   build: ./ws
   #   ports:
   #     - 3000:3000
-  #   command: ./app
 
   # bg-tasks:
   #   image: node:10.16-alpine
@@ -27,16 +24,16 @@ services:
   #     NODE_ENV: development
   #   command: npm run start-nc
 
-  deals-client:
-    image: node:10.16-alpine
-    working_dir: /home/node/app
-    volumes:
-      - ./deals-client:/home/node/app
-    environment:
-      NODE_ENV: development
-    command: npm run serve
-    ports:
-      - 8080:8080
+  # deals-client:
+  #   image: node:10.16-alpine
+  #   working_dir: /home/node/app
+  #   volumes:
+  #     - ./deals-client:/home/node/app
+  #   environment:
+  #     NODE_ENV: development
+  #   command: npm run serve
+  #   ports:
+  #     - 8080:8080
 
   db:
     image: mariadb:latest
@@ -44,7 +41,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
     volumes:
-      - ./db:/docker-entrypoint-initdb.d/
+      - ./db/sql_scripts:/docker-entrypoint-initdb.d/
+      - ./db/config:/etc/mysql/conf.d
     ports:
       - 3306:3306
 
