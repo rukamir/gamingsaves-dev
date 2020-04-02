@@ -25,8 +25,10 @@ CREATE TABLE `game` (
   `desc` text DEFAULT NULL,
   `rating` tinytext DEFAULT NULL,
   `release` date DEFAULT NULL,
-  `msrp` smallint(5) DEFAULT NULL,
+  `msrp` decimal(6,2) DEFAULT NULL,
   `thumbnail_url` varchar(200) DEFAULT NULL,
+  `pub` varchar(150) DEFAULT NULL,
+  `dev` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id`,`src`),
   FULLTEXT KEY `titledesc` (`title`,`desc`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
