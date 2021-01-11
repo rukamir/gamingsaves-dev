@@ -36,10 +36,11 @@ services:
   #     - 8080:8080
 
   db:
-    image: mariadb:latest
+    image: mongo:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: password
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
       - ./db/sql_scripts:/docker-entrypoint-initdb.d/
       - ./db/config:/etc/mysql/conf.d
